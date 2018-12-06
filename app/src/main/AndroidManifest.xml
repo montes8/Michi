@@ -3,6 +3,7 @@
     package="com.example.tayler_gabbi.michi">
 
     <application
+        android:name=".MichiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".PuntajesActivity" />
+        <activity android:name=".JuegoActivity"></activity>
     </application>
 
 </manifest>

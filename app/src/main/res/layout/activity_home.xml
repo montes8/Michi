@@ -54,6 +54,7 @@
             />
 
         <Button
+            android:id="@+id/btn_agregar_jugador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -63,6 +64,7 @@
             android:textColor="#0288D1" />
 
         <Button
+            android:id="@+id/btn_iniciar_partida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -72,6 +74,7 @@
             android:textColor="#0288D1" />
 
         <Button
+            android:id="@+id/btn_ver_puntaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

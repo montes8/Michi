@@ -1,7 +1,6 @@
 package com.example.tayler_gabbi.michi
 
 import android.app.Application
-import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import com.example.tayler_gabbi.michi.database.MichiDataBase
 

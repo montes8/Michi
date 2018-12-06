@@ -7,9 +7,9 @@ import android.arch.persistence.room.PrimaryKey
 class Jugador(
 
         @PrimaryKey(autoGenerate = true)
-        val id : Long? = null,
+        val id : Long?,
 
-        val nombre : String = "",
+        val nombre : String,
 
        val puntaje : Int = 0
 

@@ -13,6 +13,9 @@ interface JugadorDao {
     @Insert
     fun insert(jugador: Jugador): Long
 
+    @Insert
+    fun insertarListaJugadores(plato : ArrayList<Jugador>) : Array<Long>
+
     @Delete
     fun deleteJugador(jugador: Jugador):Int
 
