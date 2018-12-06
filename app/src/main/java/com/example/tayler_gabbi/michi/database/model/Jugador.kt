@@ -9,9 +9,6 @@ class Jugador(
         @PrimaryKey(autoGenerate = true)
         val id : Long?,
 
-        val nombre : String,
-
-       val puntaje : Int = 0
-
+        val nombre : String
 
 )

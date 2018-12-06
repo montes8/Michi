@@ -1,4 +1,4 @@
-package com.example.tayler_gabbi.michi.database
+package com.example.tayler_gabbi.michi.database.dao
 
 import android.arch.persistence.room.*
 import com.example.tayler_gabbi.michi.database.model.Jugador
