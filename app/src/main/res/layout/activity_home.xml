@@ -1,74 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_Home"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:titleTextColor="#FFFFFF" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="30dp"
-        android:text="Bienvenido"/>
-
-    <Spinner
-        android:id="@+id/combo_jugador1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_height="match_parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/combo_jugador2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Bienvenido"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#03A9F4"
-        android:background="@drawable/button_style"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:ems="20"
-        android:text="agregar jugador"/>
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="#03A9F4"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/button_style"
-    android:layout_marginTop="15dp"
-    android:ems="20"
-    android:text="iniciar partida"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#03A9F4"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/button_style"
-        android:layout_marginTop="15dp"
-        android:ems="20"
-        android:text="ver puntajes"/>
+        <Spinner
+            android:id="@+id/combo_jugador1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <Spinner
+            android:id="@+id/combo_jugador2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_style"
+            android:text="agregar jugador"
+            android:textColor="#0288D1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_style"
+            android:text="iniciar partida"
+            android:textColor="#0288D1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_style"
+            android:text="ver puntajes"
+            android:textColor="#0288D1" />
+
+    </LinearLayout>
 </LinearLayout>

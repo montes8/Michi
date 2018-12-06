@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
         var jugadores = arrayOf("ingrese jugador")
         val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spiner1!!.adapter = adapter
         spiner2!!.adapter = adapter
 
