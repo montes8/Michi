@@ -47,55 +47,57 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
         when(item){
 
-            btn_agregar_jugador -> {
-
-                val dialogBuilder = AlertDialog.Builder(this@HomeActivity)
-                val dialogView = layoutInflater.inflate(R.layout.dialog_agregar_jugador,null)
-
-                dialogBuilder.setView(dialogView)
-                dialogBuilder.setCancelable(true)
-
-                val dialog = dialogBuilder.create()
-                dialogView.btn_dialog_agregar.setOnClickListener{
-
-                    thread(start=true){
-
-                        if(!dialogView.edit_name_jugador.text.toString().isEmpty()){
-
-                            val jugador = Jugador()
-                            jugador.nombre = dialogView.edit_name_jugador.text.toString()
-
-                            val nuevoId = MichiApplication.dataBase!!.jugadorDao().insert(jugador)
-
-                            if (nuevoId != null && nuevoId > 0){
-                                handler.post {
-                                    toast("Jugador Agregado")
-                                    dialog.dismiss()
-                                }
-
-                            }else{
-                                handler.post {
-                                    toast("Jugador No Agregado")
-                                    dialog.dismiss()
-                                }
-
-                            }
-
-                        }else{
-                            toast("Ingrese Nombre")
-                        }
-
-                    }
-
-                }
-
-
-                dialog.show()
-            }
+            btn_agregar_jugador -> { agregarNuevoJugador()}
 
             btn_iniciar_partida -> startActivity<RegistroActivity>()
 
             btn_ver_puntaje -> startActivity<RegistroActivity>()
         }
+    }
+
+    fun agregarNuevoJugador(){
+
+        val dialogBuilder = AlertDialog.Builder(this@HomeActivity)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_agregar_jugador,null)
+
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.setCancelable(true)
+
+        val dialog = dialogBuilder.create()
+        dialogView.btn_dialog_agregar.setOnClickListener{
+
+            thread(start=true){
+
+                if(!dialogView.edit_name_jugador.text.toString().isEmpty()){
+
+                    val jugador = Jugador()
+                    jugador.nombre = dialogView.edit_name_jugador.text.toString()
+
+                    val nuevoId = MichiApplication.dataBase!!.jugadorDao().insert(jugador)
+
+                    if (nuevoId != null && nuevoId > 0){
+                        handler.post {
+                            toast("Jugador Agregado")
+                            dialog.dismiss()
+                        }
+
+                    }else{
+                        handler.post {
+                            toast("Jugador No Agregado")
+                            dialog.dismiss()
+                        }
+
+                    }
+
+                }else{
+                    toast("Ingrese Nombre")
+                }
+
+            }
+
+        }
+
+
+        dialog.show()
     }
 }
