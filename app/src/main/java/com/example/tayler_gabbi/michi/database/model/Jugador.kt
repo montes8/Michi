@@ -4,11 +4,11 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity
-class Jugador(
+data class Jugador(
 
         @PrimaryKey(autoGenerate = true)
-        val id : Long?,
+        val id : Long? = null,
 
-        val nombre : String
+        var nombre : String = ""
 
 )

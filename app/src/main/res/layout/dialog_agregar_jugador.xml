@@ -6,7 +6,6 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/nombre_plato_dialog"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginTop="10dp"
@@ -18,7 +17,6 @@
         />
 
     <TextView
-        android:id="@+id/precio_plato_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -28,7 +26,7 @@
     />
 
     <EditText
-        android:id="@+id/cantidad_plato_dialog"
+        android:id="@+id/edit_name_jugador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,7 +36,7 @@
        />
 
     <Button
-        android:id="@+id/btnagregar_orden_dialog"
+        android:id="@+id/btn_dialog_agregar"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="agregar "
