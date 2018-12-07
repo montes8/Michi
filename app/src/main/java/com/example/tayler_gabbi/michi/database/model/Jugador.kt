@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey
 data class Jugador(
 
         @PrimaryKey(autoGenerate = true)
-        val id : Long? = null,
+        var id : Long? = null,
 
         var nombre : String = ""
 

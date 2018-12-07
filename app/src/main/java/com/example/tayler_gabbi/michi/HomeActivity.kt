@@ -31,6 +31,10 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         spiner1 = findViewById(R.id.combo_jugador1)
         spiner2 = findViewById(R.id.combo_jugador2)
 
+        btn_agregar_jugador.setOnClickListener(this)
+        btn_iniciar_partida.setOnClickListener(this)
+        btn_ver_puntaje.setOnClickListener(this)
+
         var jugadores = arrayOf("ingrese jugador")
         val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
         adapter.setDropDownViewResource(R.layout.molde_spinner)
@@ -59,7 +63,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                         if(!dialogView.edit_name_jugador.text.toString().isEmpty()){
 
                             val jugador = Jugador()
-                            jugador.nombre = edit_name_jugador.text.toString()
+                            jugador.nombre = dialogView.edit_name_jugador.text.toString()
 
                             val nuevoId = MichiApplication.dataBase!!.jugadorDao().insert(jugador)
 
