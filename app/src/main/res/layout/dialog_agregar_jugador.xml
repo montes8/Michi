@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/nombre_plato_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Agregar Jugador"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/precio_plato_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Nombre"
+
+    />
+
+    <EditText
+        android:id="@+id/cantidad_plato_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:inputType="number"
+        android:hint="nombre"
+
+       />
+
+    <Button
+        android:id="@+id/btnagregar_orden_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="agregar "
+        android:ems="8"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_style"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        />
+</LinearLayout>
