@@ -9,4 +9,9 @@ class PuntajesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_puntajes)
     }
+
+    private fun ajusteToolbarHome() {
+        setSupportActionBar(homeToolbar)
+        title = "LISTA DE PUNTAJES"
+    }
 }

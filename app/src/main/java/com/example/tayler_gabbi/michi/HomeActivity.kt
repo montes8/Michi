@@ -47,8 +47,12 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
             adapter.setDropDownViewResource(R.layout.molde_spinner)
-            spiner1!!.adapter = adapter
-            spiner2!!.adapter = adapter
+
+            handler.post {
+                spiner1!!.adapter = adapter
+                spiner2!!.adapter = adapter
+            }
+
 
         }
 
@@ -62,7 +66,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             btn_agregar_jugador -> { agregarNuevoJugador()}
 
-            btn_iniciar_partida -> startActivity<RegistroActivity>()
+            btn_iniciar_partida -> startActivity<JuegoActivity>()
 
             btn_ver_puntaje -> startActivity<RegistroActivity>()
         }
@@ -113,4 +117,6 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
         dialog.show()
     }
+
+
 }
