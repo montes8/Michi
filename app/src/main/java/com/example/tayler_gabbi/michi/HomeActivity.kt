@@ -35,11 +35,24 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         btn_iniciar_partida.setOnClickListener(this)
         btn_ver_puntaje.setOnClickListener(this)
 
-        var jugadores = arrayOf("ingrese jugador")
-        val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
-        adapter.setDropDownViewResource(R.layout.molde_spinner)
-        spiner1!!.adapter = adapter
-        spiner2!!.adapter = adapter
+        thread(start=true){
+            val jugadores = ArrayList<String>()
+
+            jugadores.add("seleccione jugador")
+            val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
+
+            lista.forEach {
+                jugadores.add(it.nombre)
+            }
+
+            val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
+            adapter.setDropDownViewResource(R.layout.molde_spinner)
+            spiner1!!.adapter = adapter
+            spiner2!!.adapter = adapter
+
+        }
+
+
 
     }
 
