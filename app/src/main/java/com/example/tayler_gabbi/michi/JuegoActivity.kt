@@ -1,7 +1,11 @@
 package com.example.tayler_gabbi.michi
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_juego.*
 
 class JuegoActivity : AppCompatActivity() {
@@ -22,5 +26,113 @@ class JuegoActivity : AppCompatActivity() {
         title = "EMPIEZA A JUGAR"
     }
 
+    protected fun btnCliqueado(view: View){
 
+        val btnSelecionado=view as Button
+        var idCelda=0
+
+        when(btnSelecionado.id){
+
+            R.id.button1 -> idCelda=1
+            R.id.button2 -> idCelda=2
+            R.id.button3 -> idCelda=3
+            R.id.button4 -> idCelda=4
+            R.id.button5 -> idCelda=5
+            R.id.button6 -> idCelda=6
+            R.id.button7 -> idCelda=7
+            R.id.button8 -> idCelda=8
+            R.id.button9 -> idCelda=9
+        }
+        partida(idCelda,btnSelecionado)
+    }
+
+    fun partida(idCelda:Int,btnSelecionado:Button){
+
+        if (jugadorActivo==1){
+            btnSelecionado.text="X"
+            btnSelecionado.setBackgroundColor(Color.BLUE)
+            jugador1.add(idCelda)
+            jugadorActivo=2
+        }else{
+            btnSelecionado.text="O"
+            btnSelecionado.setBackgroundColor(Color.GREEN)
+            jugador2.add(idCelda)
+            jugadorActivo=1
+        }
+        btnSelecionado.isEnabled=false
+        ganador()
+
+    }
+
+    fun ganador() {
+
+        var ganador = -1
+
+        //linea 1
+        if (jugador1.contains(1) && jugador1.contains(2) && jugador1.contains(3)) {
+            ganador = 1
+        }
+        if (jugador2.contains(1) && jugador2.contains(2) && jugador2.contains(3)) {
+            ganador = 2
+        }
+        //linea 2
+        if (jugador1.contains(4) && jugador1.contains(5) && jugador1.contains(6)) {
+            ganador = 1
+        }
+
+        if (jugador2.contains(4) && jugador2.contains(5) && jugador2.contains(6)) {
+            ganador = 2
+        }
+        //linea 3
+        if (jugador1.contains(7) && jugador1.contains(8) && jugador1.contains(9)) {
+            ganador = 1
+        }
+
+        if (jugador2.contains(7) && jugador2.contains(8) && jugador2.contains(9)) {
+            ganador = 2
+        }
+        //columna 1
+        if(jugador1.contains(1)&&jugador1.contains(4)&&jugador1.contains(7)){
+            ganador=1
+        }
+        if(jugador2.contains(1)&&jugador2.contains(4)&&jugador2.contains(7)) {
+            ganador = 2
+        }
+        //columna 2
+        if(jugador1.contains(2)&&jugador1.contains(5)&&jugador1.contains(8)){
+            ganador=1
+        }
+        if(jugador2.contains(2)&&jugador2.contains(5)&&jugador2.contains(8)) {
+            ganador = 2
+        }
+        //columna 3
+        if(jugador1.contains(3)&&jugador1.contains(6)&&jugador1.contains(9)){
+            ganador=1
+        }
+        if(jugador2.contains(3)&&jugador2.contains(6)&&jugador2.contains(9)) {
+            ganador = 2
+        }
+        //lina en x 1
+        if(jugador1.contains(1)&&jugador1.contains(5)&&jugador1.contains(9)){
+            ganador=1
+        }
+        if(jugador2.contains(1)&&jugador2.contains(5)&&jugador2.contains(9)) {
+            ganador = 2
+        }
+        //linea x 2
+        if(jugador1.contains(3)&&jugador1.contains(5)&&jugador1.contains(7)){
+            ganador=1
+        }
+        if(jugador2.contains(3)&&jugador2.contains(5)&&jugador2.contains(7)) {
+            ganador = 2
+        }
+
+        if (ganador!=-1) {
+            if (ganador == 1) {
+                Toast.makeText(this, "jugador 1 ha ganado!!", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "jugador 2 ha ganado!!", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 }
