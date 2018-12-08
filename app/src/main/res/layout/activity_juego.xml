@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".JuegoActivity">
+    tools:context=".JuegoActivity"
+    android:gravity="center"
+    android:background="@drawable/wen">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_juego"
@@ -19,5 +21,107 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:titleTextColor="#FFFFFF" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:gravity="center"
+        android:background="@drawable/transparente">
+
+
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"
+            />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button4"
+            android:background="@drawable/transparente"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:onClick="btnCliqueado"
+            />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"
+            />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:background="@drawable/transparente"
+            android:onClick="btnCliqueado"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:background="@drawable/transparente"
+            android:onClick="btnCliqueado" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginEnd="3pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"
+            />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:onClick="btnCliqueado"
+            android:background="@drawable/transparente"
+            />
+    </TableRow>
+
+
 
 </LinearLayout>

@@ -6,6 +6,10 @@ import kotlinx.android.synthetic.main.activity_juego.*
 
 class JuegoActivity : AppCompatActivity() {
 
+    var jugador1=ArrayList<Int>()
+    var jugador2=ArrayList<Int>()
+    var jugadorActivo=1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
@@ -17,4 +21,6 @@ class JuegoActivity : AppCompatActivity() {
         setSupportActionBar(toolbar_juego)
         title = "EMPIEZA A JUGAR"
     }
+
+
 }
