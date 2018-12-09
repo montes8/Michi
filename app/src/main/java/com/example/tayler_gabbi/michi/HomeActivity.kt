@@ -12,6 +12,7 @@ import com.example.tayler_gabbi.michi.database.model.Jugador
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.dialog_agregar_jugador.*
 import kotlinx.android.synthetic.main.dialog_agregar_jugador.view.*
+import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import kotlin.concurrent.thread
@@ -60,6 +61,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                         val jugador1 = parent!!.getItemAtPosition(position).toString()
+                        defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
 
 
                     }
@@ -72,6 +74,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                         val jugador2 = parent!!.getItemAtPosition(position).toString()
+                        defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
 
 
                     }
