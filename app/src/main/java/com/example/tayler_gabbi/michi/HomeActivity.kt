@@ -37,53 +37,14 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         btn_iniciar_partida.setOnClickListener(this)
         btn_ver_puntaje.setOnClickListener(this)
 
-        thread(start=true){
-            val jugadores = ArrayList<String>()
 
-            jugadores.add("seleccione jugador")
-            val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
-
-            lista.forEach {
-                jugadores.add(it.nombre)
-            }
-
-            val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
-            adapter.setDropDownViewResource(R.layout.molde_spinner)
-
-            handler.post {
-                spiner1!!.adapter = adapter
-                spiner2!!.adapter = adapter
-
-                spiner1!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        val jugador1 = parent!!.getItemAtPosition(position).toString()
-                        defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
+       cargarSpiner()
 
 
-                    }
-                }
+    }
 
-                spiner2!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        val jugador2 = parent!!.getItemAtPosition(position).toString()
-                        defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
-
-
-                    }
-                }
-            }
-
-
-        }
-
+    override fun onResume() {
+        super.onResume()
 
 
     }
@@ -122,6 +83,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
                     if (nuevoId != null && nuevoId > 0){
                         handler.post {
+                            cargarSpiner()
                             toast("Jugador Agregado")
                             dialog.dismiss()
                         }
@@ -144,6 +106,60 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
 
         dialog.show()
+    }
+
+    fun cargarSpiner(){
+        thread(start=true){
+            val jugadores = ArrayList<String>()
+
+            jugadores.add("seleccione jugador")
+            val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
+
+            lista.forEach {
+                jugadores.add(it.nombre)
+            }
+
+            val adapter = ArrayAdapter<String>(this, R.layout.molde_spinner, jugadores)
+            adapter.setDropDownViewResource(R.layout.molde_spinner)
+
+            handler.post {
+
+                spiner1!!.adapter = adapter
+                spiner2!!.adapter = adapter
+
+                spiner1!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        val jugador1 = parent!!.getItemAtPosition(position).toString()
+                        defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
+
+
+                    }
+                }
+
+                spiner2!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        val jugador2 = parent!!.getItemAtPosition(position).toString()
+                        defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
+
+
+                    }
+                }
+
+
+
+            }
+
+
+        }
+
     }
 
 
