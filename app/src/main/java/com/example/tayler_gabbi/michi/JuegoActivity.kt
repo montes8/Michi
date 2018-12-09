@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_juego.*
+import org.jetbrains.anko.defaultSharedPreferences
 
 class JuegoActivity : AppCompatActivity() {
 
@@ -18,13 +19,9 @@ class JuegoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
 
-        ajusteToolbarJuego()
     }
 
-    private fun ajusteToolbarJuego() {
-        setSupportActionBar(toolbar_juego)
-        title = "EMPIEZA A JUGAR"
-    }
+
 
     protected fun btnCliqueado(view: View){
 
@@ -65,6 +62,10 @@ class JuegoActivity : AppCompatActivity() {
     }
 
     fun ganador() {
+
+
+        val jugadorUno = defaultSharedPreferences.getString("jugador1","")
+        val jugadorDos = defaultSharedPreferences.getString("jugador2","")
 
         var ganador = -1
 
@@ -129,9 +130,9 @@ class JuegoActivity : AppCompatActivity() {
 
         if (ganador!=-1) {
             if (ganador == 1) {
-                Toast.makeText(this, "jugador 1 ha ganado!!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "$jugadorUno ha ganado!!", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this, "jugador 2 ha ganado!!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "$jugadorDos ha ganado!!", Toast.LENGTH_LONG).show()
             }
         }
     }
