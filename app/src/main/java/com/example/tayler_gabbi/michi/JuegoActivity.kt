@@ -19,6 +19,9 @@ class JuegoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
 
+        setSupportActionBar(toolbar_Juego)
+        toolbar_Juego.title = "SUERTE EN EL JUEGO"
+
     }
 
 

@@ -38,6 +38,8 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         btn_ver_puntaje.setOnClickListener(this)
 
 
+
+
        cargarSpiner()
 
 
