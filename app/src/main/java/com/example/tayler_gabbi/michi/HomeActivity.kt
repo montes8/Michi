@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.tayler_gabbi.michi.database.model.Jugador
@@ -51,6 +52,30 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
             handler.post {
                 spiner1!!.adapter = adapter
                 spiner2!!.adapter = adapter
+
+                spiner1!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        val jugador1 = parent!!.getItemAtPosition(position).toString()
+
+
+                    }
+                }
+
+                spiner2!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        val jugador2 = parent!!.getItemAtPosition(position).toString()
+
+
+                    }
+                }
             }
 
 
@@ -68,7 +93,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             btn_iniciar_partida -> startActivity<JuegoActivity>()
 
-            btn_ver_puntaje -> startActivity<RegistroActivity>()
+            btn_ver_puntaje -> startActivity<PuntajesActivity>()
         }
     }
 
