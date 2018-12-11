@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.eddymontesinos.demosqlite_romm.utils.DemoUtils
 import kotlinx.android.synthetic.main.activity_juego.*
 import org.jetbrains.anko.defaultSharedPreferences
 
@@ -49,12 +50,11 @@ class JuegoActivity : AppCompatActivity() {
     fun partida(idCelda:Int,btnSelecionado:ImageView){
 
         if (jugadorActivo==1){
-            btnSelecionado.resources.getDrawable(R.drawable.happy,null)
-            btnSelecionado.setBackgroundColor(Color.BLUE)
+            btnSelecionado.setImageDrawable(DemoUtils.getImage(this,"charli"))
             jugador1.add(idCelda)
             jugadorActivo=2
         }else{
-            btnSelecionado.resources.getDrawable(R.drawable.charli,null)
+            btnSelecionado.setImageDrawable(DemoUtils.getImage(this,"happy"))
             btnSelecionado.setBackgroundColor(Color.GREEN)
             jugador2.add(idCelda)
             jugadorActivo=1

@@ -40,7 +40,8 @@
             android:layout_height="40pt"
             android:layout_marginEnd="3pt"
             android:onClick="btnCliqueado"
-            android:background="@drawable/transparente"/>
+            android:background="@drawable/transparente"
+          />
 
         <ImageView
             android:id="@+id/button2"
