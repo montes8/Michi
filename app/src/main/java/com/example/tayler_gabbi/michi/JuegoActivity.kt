@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_juego.*
 import org.jetbrains.anko.defaultSharedPreferences
@@ -28,7 +29,7 @@ class JuegoActivity : AppCompatActivity() {
 
     protected fun btnCliqueado(view: View){
 
-        val btnSelecionado=view as Button
+        val btnSelecionado=view as ImageView
         var idCelda=0
 
         when(btnSelecionado.id){
@@ -46,7 +47,7 @@ class JuegoActivity : AppCompatActivity() {
         partida(idCelda,btnSelecionado)
     }
 
-    fun partida(idCelda:Int,btnSelecionado:Button){
+    fun partida(idCelda:Int,btnSelecionado:ImageView){
 
         if (jugadorActivo==1){
             btnSelecionado.text="X"
