@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_juego.*
@@ -50,12 +49,12 @@ class JuegoActivity : AppCompatActivity() {
     fun partida(idCelda:Int,btnSelecionado:ImageView){
 
         if (jugadorActivo==1){
-            btnSelecionado.text="X"
+            btnSelecionado.resources.getDrawable(R.drawable.happy,null)
             btnSelecionado.setBackgroundColor(Color.BLUE)
             jugador1.add(idCelda)
             jugadorActivo=2
         }else{
-            btnSelecionado.text="O"
+            btnSelecionado.resources.getDrawable(R.drawable.charli,null)
             btnSelecionado.setBackgroundColor(Color.GREEN)
             jugador2.add(idCelda)
             jugadorActivo=1
