@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.tayler_gabbi.michi.database.model.Jugador
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.dialog_agregar_jugador.*
 import kotlinx.android.synthetic.main.dialog_agregar_jugador.view.*
 import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.startActivity
@@ -37,10 +36,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         btn_iniciar_partida.setOnClickListener(this)
         btn_ver_puntaje.setOnClickListener(this)
 
-
-
-
-       cargarSpiner()
+        cargarSpiner()
 
 
     }
@@ -52,18 +48,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             btn_agregar_jugador -> { agregarNuevoJugador()}
 
-            btn_iniciar_partida -> {
-
-                val validar = cargarSpiner()
-
-                if (validar == true){
-                    startActivity<JuegoActivity>()
-                }else{
-
-                    toast("seleccione jugadores")
-                }
-
-                }
+            btn_iniciar_partida -> { }
 
             btn_ver_puntaje -> startActivity<PuntajesActivity>()
         }
@@ -116,13 +101,12 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         dialog.show()
     }
 
-    fun cargarSpiner() :Boolean{
-        var valor = false
+    fun cargarSpiner(){
+
+
         thread(start=true) {
 
             val jugadores = ArrayList<String>()
-
-            jugadores.add("seleccione jugador")
             val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
 
             lista.forEach {
@@ -146,12 +130,8 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        val jugador1 = parent!!.getItemAtPosition(position).toString()
+                         val jugador1 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
-
-                        if (!jugador1.equals("seleccione jugador"))
-                            valor = true
-
 
                     }
                 }
@@ -165,19 +145,9 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                         val jugador2 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
 
-                        if (!jugador2.equals("seleccione jugador"))
-                            valor = true
-
-
                     }
                 }
 
-
-
-
-
-
-        return valor
     }
 
 
