@@ -45,11 +45,6 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-
-    }
 
     override fun onClick(item: View?) {
 
@@ -57,7 +52,18 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             btn_agregar_jugador -> { agregarNuevoJugador()}
 
-            btn_iniciar_partida -> startActivity<JuegoActivity>()
+            btn_iniciar_partida -> {
+
+                val validar = cargarSpiner()
+
+                if (validar == true){
+                    startActivity<JuegoActivity>()
+                }else{
+
+                    toast("seleccione jugadores")
+                }
+
+                }
 
             btn_ver_puntaje -> startActivity<PuntajesActivity>()
         }
@@ -110,8 +116,10 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
         dialog.show()
     }
 
-    fun cargarSpiner(){
-        thread(start=true){
+    fun cargarSpiner() :Boolean{
+        var valor = false
+        thread(start=true) {
+
             val jugadores = ArrayList<String>()
 
             jugadores.add("seleccione jugador")
@@ -129,6 +137,9 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                 spiner1!!.adapter = adapter
                 spiner2!!.adapter = adapter
 
+            }
+
+        }
                 spiner1!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -137,6 +148,9 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                         val jugador1 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
+
+                        if (!jugador1.equals("seleccione jugador"))
+                            valor = true
 
 
                     }
@@ -151,17 +165,19 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                         val jugador2 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
 
+                        if (!jugador2.equals("seleccione jugador"))
+                            valor = true
+
 
                     }
                 }
 
 
 
-            }
 
 
-        }
 
+        return valor
     }
 
 
