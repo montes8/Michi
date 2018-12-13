@@ -10,6 +10,9 @@ interface JugadorDao {
     @Query("select * from Jugador")
     fun listarJugador(): List<Jugador>
 
+    @Query("select * from Jugador where nombre = :jugador")
+    fun datoJugador(jugador : String): Jugador
+
     @Insert
     fun insert(jugador: Jugador): Long
 
