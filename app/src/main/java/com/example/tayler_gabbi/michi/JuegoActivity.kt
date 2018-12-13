@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.eddymontesinos.demosqlite_romm.utils.DemoUtils
+import com.example.tayler_gabbi.michi.database.model.Puntaje
 import org.jetbrains.anko.defaultSharedPreferences
+import kotlin.concurrent.thread
 
 class JuegoActivity : AppCompatActivity() {
 
@@ -130,7 +132,15 @@ class JuegoActivity : AppCompatActivity() {
         if (ganador!=-1) {
             if (ganador == 1) {
 
-                Toast.makeText(this, "$jugadorUno ha ganado!!", Toast.LENGTH_LONG).show()
+                thread (start = true){
+
+                    val puntaje = Puntaje()
+                    puntaje.jugador = jugadorUno
+                    puntaje.puntaje = 1
+
+                    MichiApplication.dataBase!!.puntajeDao().insert(puntaje)
+
+                }
                 val intent = Intent(this,GanadorActivity::class.java)
                 startActivity(intent)
             } else {
