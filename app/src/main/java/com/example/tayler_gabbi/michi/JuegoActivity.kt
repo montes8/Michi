@@ -5,12 +5,14 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.eddymontesinos.demosqlite_romm.utils.DemoUtils
 import com.example.tayler_gabbi.michi.database.model.Puntaje
 import org.jetbrains.anko.defaultSharedPreferences
+import org.jetbrains.anko.toast
 import kotlin.concurrent.thread
 
 class JuegoActivity : AppCompatActivity() {
@@ -136,7 +138,16 @@ class JuegoActivity : AppCompatActivity() {
             if (ganador == 1) {
 
                 thread (start = true){
+                    val dpuntaje = MichiApplication.dataBase!!.puntajeDao().puntajeJugador(jugadorUno)
+                    val djugador = MichiApplication.dataBase!!.jugadorDao().datoJugador(jugadorUno)
+                     Log.d("jugadorexistente","$jugadorUno")
+                    Log.d("jugadordato","${djugador.nombre}")
 
+                   if(jugadorUno.equals(djugador.nombre)){
+
+                       handler.post { toast("jugador existe") }
+
+                }else{
                         val puntaje = Puntaje()
                         puntaje.jugador = jugadorUno
                         puntaje.puntaje = 1
@@ -145,6 +156,8 @@ class JuegoActivity : AppCompatActivity() {
                             val intent = Intent(this,GanadorActivity::class.java)
                             startActivity(intent)
                         }
+                    }
+
                 }
 
             } else {
@@ -165,5 +178,5 @@ class JuegoActivity : AppCompatActivity() {
 
             }
         }
-    
+
 }
