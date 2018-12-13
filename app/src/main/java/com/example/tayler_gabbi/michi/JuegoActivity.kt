@@ -143,12 +143,22 @@ class JuegoActivity : AppCompatActivity() {
                      Log.d("jugadorexistente","$jugadorUno")
                     Log.d("jugadordato","${djugador.nombre}")
 
-                   if(jugadorUno.equals(djugador.nombre)){
+                   if(dpuntaje != null){
+                      val puntajeNuevo = Puntaje()
+                       puntajeNuevo.idP = dpuntaje.idP
+                       puntajeNuevo.jugador = dpuntaje.jugador
+                       puntajeNuevo.puntaje = dpuntaje.puntaje +1
+                       MichiApplication.dataBase!!.puntajeDao().updatePuntaje(puntajeNuevo)
+                       handler.post {
+                           val intent = Intent(this,GanadorActivity::class.java)
+                           startActivity(intent)
+                       }
 
                        handler.post { toast("jugador existe") }
 
                 }else{
                         val puntaje = Puntaje()
+                       puntaje.idP = djugador.id
                         puntaje.jugador = jugadorUno
                         puntaje.puntaje = 1
                         MichiApplication.dataBase!!.puntajeDao().insert(puntaje)

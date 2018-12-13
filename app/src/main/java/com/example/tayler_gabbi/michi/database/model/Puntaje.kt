@@ -5,7 +5,8 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity
 data class Puntaje (
-               @PrimaryKey(autoGenerate = true)
+
+               @PrimaryKey
                var idP : Long? = null,
 
                var jugador : String = "",
