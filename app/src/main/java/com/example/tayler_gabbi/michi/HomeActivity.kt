@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.example.tayler_gabbi.michi.database.model.Jugador
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.dialog_agregar_jugador.view.*
@@ -50,24 +51,14 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
             btn_agregar_jugador -> { agregarNuevoJugador()}
 
             btn_iniciar_partida -> {
-                var jugador1 = ""
-                spiner2!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                         jugador1 = parent!!.getItemAtPosition(position).toString()
-
-
-                    }
-                }
-
-                if (jugador1.equals("Seleccione")){
-                    toast("Seleccione Jugadores")
+                val jugadorUno = defaultSharedPreferences.getString("jugador1","")
+                val jugadorDos = defaultSharedPreferences.getString("jugador2","")
+                if (jugadorUno.equals("Seleccione Jugador" )|| jugadorDos.equals("Seleccione Jugador")){
+                    Toast.makeText(this,"Jugador Vacio",Toast.LENGTH_SHORT).show()
                 }else{
                     startActivity<JuegoActivity>()
                 }
+
             }
 
             btn_ver_puntaje -> startActivity<PuntajesActivity>()
@@ -129,7 +120,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
             val jugadores = ArrayList<String>()
             val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
 
-            jugadores.add("Seleccione")
+            jugadores.add("Seleccione Jugador")
 
             lista.forEach {
                 jugadores.add(it.nombre)
