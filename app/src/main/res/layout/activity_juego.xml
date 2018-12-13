@@ -1,38 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".JuegoActivity"
     android:background="@drawable/wen">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_Juego"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:titleTextColor="#FFFFFF" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent">
-
-
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="3dp"
+        android:background="@drawable/transparente"
         android:gravity="center">
-
 
         <ImageView
             android:id="@+id/button1"
@@ -41,8 +23,7 @@
             android:layout_marginEnd="3pt"
             android:onClick="btnCliqueado"
             android:background="@drawable/transparente"
-          />
-
+            />
         <ImageView
             android:id="@+id/button2"
             android:layout_width="40pt"
@@ -125,7 +106,4 @@
             android:background="@drawable/transparente"
             />
     </TableRow>
-
-    </TableLayout>
-
-</LinearLayout>
+</TableLayout>

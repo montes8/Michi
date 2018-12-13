@@ -1,5 +1,6 @@
 package com.example.tayler_gabbi.michi
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +8,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.eddymontesinos.demosqlite_romm.utils.DemoUtils
-import kotlinx.android.synthetic.main.activity_juego.*
 import org.jetbrains.anko.defaultSharedPreferences
 
 class JuegoActivity : AppCompatActivity() {
@@ -19,9 +19,6 @@ class JuegoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
-
-        setSupportActionBar(toolbar_Juego)
-        toolbar_Juego.title = "SUERTE EN EL JUEGO"
 
     }
 
@@ -55,7 +52,6 @@ class JuegoActivity : AppCompatActivity() {
             jugadorActivo=2
         }else{
             btnSelecionado.setImageDrawable(DemoUtils.getImage(this,"happy"))
-            btnSelecionado.setBackgroundColor(Color.GREEN)
             jugador2.add(idCelda)
             jugadorActivo=1
         }
@@ -133,9 +129,14 @@ class JuegoActivity : AppCompatActivity() {
 
         if (ganador!=-1) {
             if (ganador == 1) {
+
                 Toast.makeText(this, "$jugadorUno ha ganado!!", Toast.LENGTH_LONG).show()
+                val intent = Intent(this,GanadorActivity::class.java)
+                startActivity(intent)
             } else {
                 Toast.makeText(this, "$jugadorDos ha ganado!!", Toast.LENGTH_LONG).show()
+                val intent = Intent(this,GanadorActivity::class.java)
+                startActivity(intent)
             }
         }
     }

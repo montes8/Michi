@@ -22,6 +22,7 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
     var spiner1 : Spinner? = null
     var spiner2 : Spinner? = null
     var handler : Handler = Handler()
+    private var validar = true
 
 
 
@@ -48,7 +49,26 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
 
             btn_agregar_jugador -> { agregarNuevoJugador()}
 
-            btn_iniciar_partida -> { }
+            btn_iniciar_partida -> {
+                var jugador1 = ""
+                spiner2!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                         jugador1 = parent!!.getItemAtPosition(position).toString()
+
+
+                    }
+                }
+
+                if (jugador1.equals("Seleccione")){
+                    toast("Seleccione Jugadores")
+                }else{
+                    startActivity<JuegoActivity>()
+                }
+            }
 
             btn_ver_puntaje -> startActivity<PuntajesActivity>()
         }
@@ -109,6 +129,8 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
             val jugadores = ArrayList<String>()
             val lista = MichiApplication.dataBase!!.jugadorDao().listarJugador()
 
+            jugadores.add("Seleccione")
+
             lista.forEach {
                 jugadores.add(it.nombre)
             }
@@ -124,13 +146,16 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
             }
 
         }
+
+        var jugador1 = ""
+        var jugador2 = ""
                 spiner1!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                         val jugador1 = parent!!.getItemAtPosition(position).toString()
+                          jugador1 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador1",jugador1).apply()
 
                     }
@@ -142,11 +167,12 @@ class HomeActivity : AppCompatActivity() ,View.OnClickListener{
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        val jugador2 = parent!!.getItemAtPosition(position).toString()
+                         jugador2 = parent!!.getItemAtPosition(position).toString()
                         defaultSharedPreferences.edit().putString("jugador2",jugador2).apply()
 
                     }
                 }
+
 
     }
 

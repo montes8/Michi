@@ -21,7 +21,7 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".PuntajesActivity" />
         <activity android:name=".JuegoActivity" />
-        <activity android:name=".GanadorActivity"></activity>
+        <activity android:name=".GanadorActivity" />
     </application>
 
 </manifest>
