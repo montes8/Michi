@@ -152,9 +152,8 @@ class JuegoActivity : AppCompatActivity() {
                        handler.post {
                            val intent = Intent(this,GanadorActivity::class.java)
                            startActivity(intent)
+                           finish()
                        }
-
-                       handler.post { toast("jugador existe") }
 
                 }else{
                         val puntaje = Puntaje()
@@ -165,6 +164,7 @@ class JuegoActivity : AppCompatActivity() {
                         handler.post {
                             val intent = Intent(this,GanadorActivity::class.java)
                             startActivity(intent)
+                            finish()
                         }
                     }
 
@@ -172,16 +172,35 @@ class JuegoActivity : AppCompatActivity() {
 
             } else {
                 thread (start = true){
+                    val dpuntajeDos = MichiApplication.dataBase!!.puntajeDao().puntajeJugador(jugadorDos)
+                    val djugadorDos = MichiApplication.dataBase!!.jugadorDao().datoJugador(jugadorDos)
+                    Log.d("jugadorexistente","$jugadorUno")
+                    Log.d("jugadordato","${djugadorDos.nombre}")
 
-                        val puntajedos = Puntaje()
-                        puntajedos.jugador = jugadorUno
-                        puntajedos.puntaje = 1
-                        MichiApplication.dataBase!!.puntajeDao().insert(puntajedos)
+                    if(dpuntajeDos != null){
+                        val puntajeNuevo = Puntaje()
+                        puntajeNuevo.idP = dpuntajeDos.idP
+                        puntajeNuevo.jugador = dpuntajeDos.jugador
+                        puntajeNuevo.puntaje = dpuntajeDos.puntaje +1
+                        MichiApplication.dataBase!!.puntajeDao().updatePuntaje(puntajeNuevo)
                         handler.post {
-                            Toast.makeText(this, "$jugadorDos ha ganado!!", Toast.LENGTH_LONG).show()
                             val intent = Intent(this,GanadorActivity::class.java)
                             startActivity(intent)
+                            finish()
                         }
+
+                    }else{
+                        val puntaje = Puntaje()
+                        puntaje.idP = djugadorDos.id
+                        puntaje.jugador = jugadorUno
+                        puntaje.puntaje = 1
+                        MichiApplication.dataBase!!.puntajeDao().insert(puntaje)
+                        handler.post {
+                            val intent = Intent(this,GanadorActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
                     }
 
                 }
